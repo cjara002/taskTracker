@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/taskTracker/static/css/main.7f2ba85e.chunk.css",
+    "main.js": "/taskTracker/static/js/main.47d3354d.chunk.js",
+    "main.js.map": "/taskTracker/static/js/main.47d3354d.chunk.js.map",
+    "runtime-main.js": "/taskTracker/static/js/runtime-main.dded8197.js",
+    "runtime-main.js.map": "/taskTracker/static/js/runtime-main.dded8197.js.map",
+    "static/css/2.f93178fb.chunk.css": "/taskTracker/static/css/2.f93178fb.chunk.css",
+    "static/js/2.43f870d8.chunk.js": "/taskTracker/static/js/2.43f870d8.chunk.js",
+    "static/js/2.43f870d8.chunk.js.map": "/taskTracker/static/js/2.43f870d8.chunk.js.map",
+    "index.html": "/taskTracker/index.html",
+    "precache-manifest.e8107a3a6f51bb26ad2314f2b8a82606.js": "/taskTracker/precache-manifest.e8107a3a6f51bb26ad2314f2b8a82606.js",
+    "service-worker.js": "/taskTracker/service-worker.js",
+    "static/css/2.f93178fb.chunk.css.map": "/taskTracker/static/css/2.f93178fb.chunk.css.map",
+    "static/css/main.7f2ba85e.chunk.css.map": "/taskTracker/static/css/main.7f2ba85e.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dded8197.js",
+    "static/css/2.f93178fb.chunk.css",
+    "static/js/2.43f870d8.chunk.js",
+    "static/css/main.7f2ba85e.chunk.css",
+    "static/js/main.47d3354d.chunk.js"
+  ]
+}

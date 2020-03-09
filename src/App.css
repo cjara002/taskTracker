@@ -1,0 +1,51 @@
+/* ========================================================================
+App.jsx 
+ ========================================================================== */
+.App {
+  text-align: center;
+  background-color: #F7F5EB;
+  /* min-height: 100vh;
+  display: inline;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  */
+  font-size: calc(10px + 2vmin);
+}
+
+ /* ========================================================================
+ListHeader
+ ========================================================================== */
+.listName{
+  text-align: center;
+  font: bold;
+  font-size: 50px;
+  padding: 10px;
+  background-image: url("https://images.pexels.com/photos/910299/pexels-photo-910299.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  color: white;
+}
+
+#sideList {
+/* width: 100px; */
+height: 100px !important;
+/* position: relative; */
+animation: myMove 3s !important;
+animation-fill-mode: forwards !important;
+}
+
+@keyframes myMove {
+  from {top: 0px}
+  to {top: 50px}
+}
+
+#fadeText{
+  animation: fadeIn ease 2s !important;
+  -webkit-animation: fadeIn ease 2s !important;
+  -moz-animation: fadeIn ease 2s !important;
+  -o-animation: fadeIn ease 2s !important;
+  -ms-animation: fadeIn ease 2s !important;
+}
+
+@keyframes fadeIn{
+0% {opacity: 0}
+100%{opacity: 1;}
+}

@@ -5,18 +5,29 @@ import ListFilter from "./components/ListFilter.jsx";
 import ListHeader from "./components/ListHeader.jsx";
 import React from "react";
 import Swal from "sweetalert2";
+import Quote from "./components/Quotes";
+import {
+  Card,
+  Button,
+  CardHeader,
+  CardBody,
+  CardText
+} from "reactstrap";
 
 class App extends React.Component {
   state = {
     items: [],
     itemPriority: [],
-    itemFilter: false
+    itemFilter: false,
+    quote: [],
+    singleQuote:[]
   };
 
   componentDidMount() {
     if (localStorage.length > 0) {
       this.storageList();
       this.priorityValue();
+      this.setQuote(Quote);
     }
   }
 
@@ -37,12 +48,35 @@ class App extends React.Component {
     }));
   };
 
+  setQuote = singleQuote => {
+    console.log("setQuote:", singleQuote);
+    let single = [];
+    for(let i = 0; i < singleQuote.length; i++) {
+     let response = singleQuote[i].quotes;
+     single.push(response)
+     break;
+    }
+    this.setState(() => ({
+      singleQuote: single
+    }));
+  };
+  // setQuote = singleQuote => {
+  //   console.log("setQuote:", singleQuote);
+  //   this.setState(() => ({
+  //     quote: singleQuote
+  //   }),
+  //   () => this.singleQuote(this.state.quote)
+  //   );
+  // };
+
+
   taskFilter = type => {
     return <ListFilter taskType={type} triggerActive={this.activeFilter} />;
   };
 
   activeFilter = item => {
-    this.setState(state => ({
+    this.setState(
+      state => ({
         itemPriority: state.itemPriority.map(activeType => {
           if (activeType.priorityType === item) {
             activeType.isActive = !activeType.isActive;
@@ -98,6 +132,19 @@ class App extends React.Component {
     });
   };
 
+  singleQuote = (aQuote) => {
+    let single = [];
+    for(let i = 0; i < aQuote.length; i++) {
+     let response = aQuote[i].quotes;
+     single.push(response)
+     break;
+    }
+  //   this.setState(() => ({
+  //     quote: singleQuote
+  //   }));
+  // };
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -126,7 +173,23 @@ class App extends React.Component {
             >
               Clear
             </button>
+
+            <div>
+              <Card>
+                <CardHeader tag="h3" className="text-center">Quote</CardHeader>
+                <CardBody>
+                  <CardText>
+                    {/* {this.state.quote && this.state.quote[0].quotes} */}
+                    {/* {this.state.quote && this.state.quote.quotes} */}
+                    {this.state.singleQuote}
+                    {/* {this.state.quote[0].quotes} */}
+                  </CardText>
+                  <Button>Read More</Button>
+                </CardBody>
+              </Card>
+            </div>
           </div>
+
           <div className="col-lg-9 App">
             <List item={this.state.items} />
           </div>

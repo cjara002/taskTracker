@@ -28,8 +28,8 @@ ListHeader
 /* width: 100px; */
 height: 100px !important;
 /* position: relative; */
-animation: myMove 3s !important;
-animation-fill-mode: forwards !important;
+/* animation: myMove 3s !important; */
+/* animation-fill-mode: forwards !important; */
 }
 
 @keyframes myMove {

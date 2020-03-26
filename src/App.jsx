@@ -3,16 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import List from "./components/List.jsx";
 import ListFilter from "./components/ListFilter.jsx";
 import ListHeader from "./components/ListHeader.jsx";
+import ListFooter from "./components/ListFooter.jsx";
 import React from "react";
 import Swal from "sweetalert2";
 import Quote from "./components/Quotes";
-import {
-  Card,
-  Button,
-  CardHeader,
-  CardBody,
-  CardText
-} from "reactstrap";
+import { Card, CardHeader, CardBody, CardText } from "reactstrap";
 
 class App extends React.Component {
   state = {
@@ -20,13 +15,15 @@ class App extends React.Component {
     itemPriority: [],
     itemFilter: false,
     quote: [],
-    singleQuote:[]
+    singleQuote: []
   };
 
   componentDidMount() {
     if (localStorage.length > 0) {
       this.storageList();
       this.priorityValue();
+      this.setQuote(Quote);
+    } else {
       this.setQuote(Quote);
     }
   }
@@ -49,26 +46,17 @@ class App extends React.Component {
   };
 
   setQuote = singleQuote => {
-    console.log("setQuote:", singleQuote);
     let single = [];
-    for(let i = 0; i < singleQuote.length; i++) {
-     let response = singleQuote[i].quotes;
-     single.push(response)
-     break;
+    for (let i = 0; i < singleQuote.length; i++) {
+      i = Math.floor(Math.random() * (singleQuote.length + 1) + 1);
+      let response = singleQuote[i].quotes;
+      single.push(response);
+      break;
     }
     this.setState(() => ({
       singleQuote: single
     }));
   };
-  // setQuote = singleQuote => {
-  //   console.log("setQuote:", singleQuote);
-  //   this.setState(() => ({
-  //     quote: singleQuote
-  //   }),
-  //   () => this.singleQuote(this.state.quote)
-  //   );
-  // };
-
 
   taskFilter = type => {
     return <ListFilter taskType={type} triggerActive={this.activeFilter} />;
@@ -76,8 +64,8 @@ class App extends React.Component {
 
   activeFilter = item => {
     this.setState(
-      state => ({
-        itemPriority: state.itemPriority.map(activeType => {
+      prevstate => ({
+        itemPriority: prevstate.itemPriority.map(activeType => {
           if (activeType.priorityType === item) {
             activeType.isActive = !activeType.isActive;
           }
@@ -132,19 +120,6 @@ class App extends React.Component {
     });
   };
 
-  singleQuote = (aQuote) => {
-    let single = [];
-    for(let i = 0; i < aQuote.length; i++) {
-     let response = aQuote[i].quotes;
-     single.push(response)
-     break;
-    }
-  //   this.setState(() => ({
-  //     quote: singleQuote
-  //   }));
-  // };
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -153,7 +128,7 @@ class App extends React.Component {
           <div className="col-lg-3" id="sideList">
             <div className="card b" style={{ margin: "2.5%" }} id="fadeText">
               <div className="list-group">
-                <div className="list-group-item d-flex justify-content-between align-items-center rounded-0">
+                <div className="list-group-item d-flex justify-content-between align-items-center">
                   <strong className="text-muted">My Task</strong>
                   <span className="float-right badge">
                     {this.state.items && this.state.items.length}
@@ -175,16 +150,12 @@ class App extends React.Component {
             </button>
 
             <div>
-              <Card>
-                <CardHeader tag="h3" className="text-center">Quote</CardHeader>
+              <Card style={{ margin: "2.5%" }}>
+                <CardHeader tag="h3" className="text-center" >
+                  Quote
+                </CardHeader>
                 <CardBody>
-                  <CardText>
-                    {/* {this.state.quote && this.state.quote[0].quotes} */}
-                    {/* {this.state.quote && this.state.quote.quotes} */}
-                    {this.state.singleQuote}
-                    {/* {this.state.quote[0].quotes} */}
-                  </CardText>
-                  <Button>Read More</Button>
+                  <CardText>{this.state.singleQuote}</CardText>
                 </CardBody>
               </Card>
             </div>
@@ -194,6 +165,7 @@ class App extends React.Component {
             <List item={this.state.items} />
           </div>
         </div>
+        < ListFooter />
       </React.Fragment>
     );
   }

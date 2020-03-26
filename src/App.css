@@ -4,13 +4,28 @@ App.jsx
 .App {
   text-align: center;
   background-color: #F7F5EB;
-  /* min-height: 100vh;
-  display: inline;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  */
   font-size: calc(10px + 2vmin);
 }
+
+#sideList {
+  animation: fadeIn ease 2s; 
+  -webkit-animation: fadeIn ease 2s;
+  }
+
+  #fadeText{
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    /* border-radius: 25px; */
+  }
+  
+  @keyframes fadeIn{
+  0% {opacity: 0}
+  100%{opacity: 1;}
+  }
+
+  #roundApp{
+    border-radius: 25px !important;
+  }
 
  /* ========================================================================
 ListHeader
@@ -24,28 +39,32 @@ ListHeader
   color: white;
 }
 
-#sideList {
-/* width: 100px; */
-height: 100px !important;
-/* position: relative; */
-/* animation: myMove 3s !important; */
-/* animation-fill-mode: forwards !important; */
+ /* ========================================================================
+List Footer
+ ========================================================================== */
+.listFoot {
+  background-color: #090b19;
+  color: white;
+  /* text-align: center; */
+  padding: 10px;
+  border-top: orange solid;
 }
 
+.footerArea{
+padding-top: 30px;
+padding-bottom: 30px;
+}
+
+.footerTitle{
+  margin-bottom: 30px;
+}
+
+#footerConnect a{
+color: white;
+text-decoration: none;
+}
 @keyframes myMove {
   from {top: 0px}
   to {top: 50px}
 }
 
-#fadeText{
-  animation: fadeIn ease 2s !important;
-  -webkit-animation: fadeIn ease 2s !important;
-  -moz-animation: fadeIn ease 2s !important;
-  -o-animation: fadeIn ease 2s !important;
-  -ms-animation: fadeIn ease 2s !important;
-}
-
-@keyframes fadeIn{
-0% {opacity: 0}
-100%{opacity: 1;}
-}

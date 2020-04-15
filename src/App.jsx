@@ -58,8 +58,8 @@ class App extends React.Component {
     }));
   };
 
-  taskFilter = type => {
-    return <ListFilter taskType={type} triggerActive={this.activeFilter} />;
+  taskFilter = (type, i) => {
+    return <ListFilter taskType={type} key={i} triggerActive={this.activeFilter} />;
   };
 
   activeFilter = item => {

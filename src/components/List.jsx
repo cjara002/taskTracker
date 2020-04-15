@@ -37,8 +37,8 @@ class List extends React.Component {
   };
 
   showMessage = () => {
-    this.setState(() => ({
-       noItems: !this.state.noItems
+    this.setState( prevState => ({
+       noItems: !prevState.noItems
        }));
   };
 
@@ -117,7 +117,7 @@ class List extends React.Component {
     return (
       <React.Fragment>
         {this.state.noItems ? (
-          <div style={{ margin: "20%" }}>
+          <div style={{ margin: "20%" }} id="newTask">
             <h1>Lets get the day started!</h1>
             <p>Please add a new task.</p>
             <button
@@ -130,9 +130,9 @@ class List extends React.Component {
         ) : (
           <Table hover>
             <thead>
-              <tr>
+              <tr id="fadeText">
                 {/* <th>#</th> */}
-                <th>Task</th>
+                <th >Task</th>
                 <th>Priority</th>
                 <th></th>
                 <th></th>

@@ -17,6 +17,11 @@ App.jsx
     -webkit-animation: fadeIn ease 2s;
     /* border-radius: 25px; */
   }
+
+  #newTask {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+  }
   
   @keyframes fadeIn{
   0% {opacity: 0}

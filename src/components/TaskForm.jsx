@@ -11,20 +11,6 @@ class TaskForm extends React.Component {
     priority: ""
   };
 
-  // static getDerivedStateFromProps (nextProps) {
-  //   debugger;
-  //   if (this.props && this.props.isEditing !== nextProps.isEditing) {
-  //     const item = nextProps.form;
-  //     return {
-  //       task: item.task,
-  //       priority: item.priority
-  //     };
-  //   } 
-  //   // else{
-  //   //   return null;
-  //   // }
-  // }
-
   componentWillReceiveProps(nextProps) {
     if (this.props.isEditing !== nextProps.isEditing) {
       const item = nextProps.form;
@@ -35,9 +21,8 @@ class TaskForm extends React.Component {
     }
   }
 
-  
-
   populateTaskOnSubmit = () =>{
+    // what is this for again?
     this.props.populateTask()
   }
 

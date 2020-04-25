@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/taskTracker/static/css/main.5f2ef578.chunk.css",
-    "main.js": "/taskTracker/static/js/main.17e92763.chunk.js",
-    "main.js.map": "/taskTracker/static/js/main.17e92763.chunk.js.map",
+    "main.css": "/taskTracker/static/css/main.1ffe9ecf.chunk.css",
+    "main.js": "/taskTracker/static/js/main.c75fc6c5.chunk.js",
+    "main.js.map": "/taskTracker/static/js/main.c75fc6c5.chunk.js.map",
     "runtime-main.js": "/taskTracker/static/js/runtime-main.2dab18e9.js",
     "runtime-main.js.map": "/taskTracker/static/js/runtime-main.2dab18e9.js.map",
     "static/css/2.0624914a.chunk.css": "/taskTracker/static/css/2.0624914a.chunk.css",
-    "static/js/2.bf81df72.chunk.js": "/taskTracker/static/js/2.bf81df72.chunk.js",
-    "static/js/2.bf81df72.chunk.js.map": "/taskTracker/static/js/2.bf81df72.chunk.js.map",
+    "static/js/2.6e797751.chunk.js": "/taskTracker/static/js/2.6e797751.chunk.js",
+    "static/js/2.6e797751.chunk.js.map": "/taskTracker/static/js/2.6e797751.chunk.js.map",
     "index.html": "/taskTracker/index.html",
-    "precache-manifest.a480a85c516d93261a5a5d30ac9ddf5c.js": "/taskTracker/precache-manifest.a480a85c516d93261a5a5d30ac9ddf5c.js",
+    "precache-manifest.cb2cd87ee2c8a01fd530fab5335b97b5.js": "/taskTracker/precache-manifest.cb2cd87ee2c8a01fd530fab5335b97b5.js",
     "service-worker.js": "/taskTracker/service-worker.js",
     "static/css/2.0624914a.chunk.css.map": "/taskTracker/static/css/2.0624914a.chunk.css.map",
-    "static/css/main.5f2ef578.chunk.css.map": "/taskTracker/static/css/main.5f2ef578.chunk.css.map"
+    "static/css/main.1ffe9ecf.chunk.css.map": "/taskTracker/static/css/main.1ffe9ecf.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.2dab18e9.js",
     "static/css/2.0624914a.chunk.css",
-    "static/js/2.bf81df72.chunk.js",
-    "static/css/main.5f2ef578.chunk.css",
-    "static/js/main.17e92763.chunk.js"
+    "static/js/2.6e797751.chunk.js",
+    "static/css/main.1ffe9ecf.chunk.css",
+    "static/js/main.c75fc6c5.chunk.js"
   ]
 }

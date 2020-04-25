@@ -72,4 +72,12 @@ text-decoration: none;
   from {top: 0px}
   to {top: 50px}
 }
+/* 
+SIngle Task */
 
+#TaskLightUp:hover{
+  background: white;
+    padding: .2em;
+    display: inline;
+    border-radius: 50%;
+}

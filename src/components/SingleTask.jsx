@@ -1,5 +1,7 @@
 import React from "react";
 import "../App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const SingleTask = props => {
 
@@ -19,20 +21,40 @@ const SingleTask = props => {
           <td>{props.list.task}</td>
           <td>{props.list.priority}</td>
           <td>
-            <button
+            {/* <button
               className="btn btn-outline-dark btn-sm"
               onClick={editSingleTask}
             >
               Edit
-            </button>
+            </button> */}
+
+            <em
+                    className="fa-1x mr-2 fas fa-pen"
+                    id="TaskLightUp"
+                    onClick={editSingleTask}
+                    style={{ float: "center", cursor: "pointer" }}
+                    data-toggle="tooltip"
+                    title="Edit Task"
+                  >
+                  </em>
           </td>
           <td>
-            <button
+            {/* <button
               className="btn btn-outline-dark btn-sm"
               onClick={deleteSingleTask}
             >
               Remove
-            </button>
+            </button> */}
+
+            <em
+                    className="fa-1x mr-2 fas fa-trash"
+                    id="TaskLightUp"
+                    onClick={deleteSingleTask}
+                    style={{ float: "center", cursor: "pointer" }}
+                    data-toggle="tooltip"
+                    title="Remove Task"
+                  >
+                  </em>
           </td>
         </tr>
       </tbody>

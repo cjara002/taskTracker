@@ -15,7 +15,8 @@ class App extends React.Component {
     itemPriority: [],
     itemFilter: false,
     quote: [],
-    singleQuote: []
+    singleQuote: [],
+    noItems: false,
   };
 
   componentDidMount() {
@@ -25,27 +26,28 @@ class App extends React.Component {
       this.setQuote(Quote);
     } else {
       this.setQuote(Quote);
+      this.showFilter();
     }
   }
 
   storageList = () => {
     const taskList = JSON.parse(localStorage.getItem("myTasks"));
     this.setState(() => ({
-      items: taskList
+      items: taskList,
     }));
   };
 
   priorityValue = () => {
     const priority = ["High", "Medium", "Low"];
     this.setState(() => ({
-      itemPriority: priority.map(priorityType => ({
+      itemPriority: priority.map((priorityType) => ({
         priorityType,
-        isActive: false
-      }))
+        isActive: false,
+      })),
     }));
   };
 
-  setQuote = singleQuote => {
+  setQuote = (singleQuote) => {
     let single = [];
     for (let i = 0; i < singleQuote.length; i++) {
       i = Math.floor(Math.random() * (singleQuote.length + 1) + 1);
@@ -54,41 +56,43 @@ class App extends React.Component {
       break;
     }
     this.setState(() => ({
-      singleQuote: single
+      singleQuote: single,
     }));
   };
 
   taskFilter = (type, i) => {
-    return <ListFilter taskType={type} key={i} triggerActive={this.activeFilter} />;
+    return (
+      <ListFilter taskType={type} key={i} triggerActive={this.activeFilter} />
+    );
   };
 
-  activeFilter = item => {
+  activeFilter = (item) => {
     this.setState(
-      prevstate => ({
-        itemPriority: prevstate.itemPriority.map(activeType => {
+      (prevstate) => ({
+        itemPriority: prevstate.itemPriority.map((activeType) => {
           if (activeType.priorityType === item) {
             activeType.isActive = !activeType.isActive;
           }
           return activeType;
-        })
+        }),
       }),
       () => this.filterTaskDisplay(this.state.itemPriority)
     );
   };
 
-  filterTaskDisplay = taskItem => {
+  filterTaskDisplay = (taskItem) => {
     const filteredPriorityType = taskItem.filter(
-      priorityType => priorityType.isActive
+      (priorityType) => priorityType.isActive
     );
     if (filteredPriorityType.length === 0) {
       this.storageList();
     } else {
-      const priority = filteredPriorityType.map(type => type);
+      const priority = filteredPriorityType.map((type) => type);
       this.populateFilteredTask(priority);
     }
   };
 
-  populateFilteredTask = priority => {
+  populateFilteredTask = (priority) => {
     const filteredTask = [];
     const currentTask = JSON.parse(localStorage.getItem("myTasks"));
 
@@ -101,7 +105,7 @@ class App extends React.Component {
       }
     }
     this.setState(() => ({
-      items: filteredTask
+      items: filteredTask,
     }));
   };
 
@@ -112,60 +116,88 @@ class App extends React.Component {
       showCancelButton: true,
       confirmButtonColor: "#042A38",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Clear All Task"
-    }).then(result => {
+      confirmButtonText: "Clear All Task",
+    }).then((result) => {
       if (result.value) {
         Swal.fire("Cleared all task!").then(localStorage.clear());
       }
     });
   };
 
+  showFilter = () => {
+    this.setState((prevState) => ({
+      noItems: !prevState.noItems,
+    }));
+  };
+
   render() {
     return (
       <React.Fragment>
         <ListHeader />
-        <div className="row">
-          <div className="col-lg-3" id="sideList">
-            <div className="card b" style={{ margin: "2.5%" }} id="fadeText">
-              <div className="list-group">
-                <div className="list-group-item d-flex justify-content-between align-items-center">
-                  <strong className="text-muted">My Task</strong>
-                  <span className="float-right badge">
-                    {this.state.items && this.state.items.length}
-                  </span>
+        {this.state.noItems ? (
+          <div className="row">
+            <div className="col-lg-3" id="sideList">
+              <div>
+                <Card style={{ margin: "2.5%" }}>
+                  <CardHeader tag="h3" className="text-center">
+                    Quote
+                  </CardHeader>
+                  <CardBody>
+                    <CardText>{this.state.singleQuote}</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+            </div>
+
+            <div className="col-lg-9 App">
+              <List item={this.state.items} />
+            </div>
+          </div>
+        ) : (
+          <div className="row">
+            <div className="col-lg-3" id="sideList">
+              <div className="card b" style={{ margin: "2.5%" }} id="fadeText">
+                <div className="list-group">
+                  <div className="list-group-item d-flex justify-content-between align-items-center">
+                    <strong className="text-muted">My Task</strong>
+                    <span className="float-right badge">
+                      {this.state.items && this.state.items.length}
+                    </span>
+                  </div>
+                </div>
+                <div className="list-group">
+                  {this.state.itemPriority.map(this.taskFilter)}
                 </div>
               </div>
-              <div className="list-group">
-                {this.state.itemPriority.map(this.taskFilter)}
+
+              <button
+                style={{ margin: "2.5%" }}
+                className="btn btn-outline-dark btn-lg btn-block"
+                id="fadeText"
+                onClick={this.clearTask}
+              >
+                Clear
+              </button>
+
+              <div>
+                <Card style={{ margin: "2.5%" }}>
+                  <CardHeader tag="h3" className="text-center">
+                    Quote
+                  </CardHeader>
+                  <CardBody>
+                    <CardText>{this.state.singleQuote}</CardText>
+                  </CardBody>
+                </Card>
               </div>
             </div>
 
-            <button
-              style={{ margin: "2.5%" }}
-              className="btn btn-outline-dark btn-lg btn-block"
-              id="fadeText"
-              onClick={this.clearTask}
-            >
-              Clear
-            </button>
-
-            <div>
-              <Card style={{ margin: "2.5%" }}>
-                <CardHeader tag="h3" className="text-center" >
-                  Quote
-                </CardHeader>
-                <CardBody>
-                  <CardText>{this.state.singleQuote}</CardText>
-                </CardBody>
-              </Card>
+            <div className="col-lg-9 App">
+              <List item={this.state.items} />
             </div>
           </div>
+        )}
 
-          <div className="col-lg-9 App">
-            <List item={this.state.items} />
-          </div>
-        </div>
-        < ListFooter />
+        <ListFooter />
       </React.Fragment>
     );
   }

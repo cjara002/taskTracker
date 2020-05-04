@@ -159,7 +159,7 @@ class App extends React.Component {
               <div className="card b" style={{ margin: "2.5%" }} id="fadeText">
                 <div className="list-group">
                   <div className="list-group-item d-flex justify-content-between align-items-center">
-                    <strong className="text-muted">My Task</strong>
+                    <strong>My Task</strong>
                     <span className="float-right badge">
                       {this.state.items && this.state.items.length}
                     </span>
@@ -172,7 +172,7 @@ class App extends React.Component {
 
               <button
                 style={{ margin: "2.5%" }}
-                className="btn btn-outline-dark btn-lg btn-block"
+                className="btn btn-dark btn-block"
                 id="fadeText"
                 onClick={this.clearTask}
               >
@@ -181,17 +181,21 @@ class App extends React.Component {
 
               <div>
                 <Card style={{ margin: "2.5%" }}>
-                  <CardHeader tag="h3" className="text-center">
+                  <CardHeader
+                    tag="h3"
+                    className="text-center"
+                    id="quoteHeader"
+                  >
                     Quote
                   </CardHeader>
-                  <CardBody>
+                  <CardBody id="quoteBody">
                     <CardText>{this.state.singleQuote}</CardText>
                   </CardBody>
                 </Card>
               </div>
             </div>
 
-            <div className="col-lg-9 App">
+            <div className="col-lg-9 App" id="taskBackground">
               <List item={this.state.items} />
             </div>
           </div>

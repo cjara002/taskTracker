@@ -1,9 +1,14 @@
 .container {
-display: contents;
- justify-content: center;
- }
+  display: contents;
+  justify-content: center;
+}
 
- .list-group-item.active {
-     background-color: rgb(4, 42, 56, 0.6) !important;
-     border-color: white !important;
- }
+.list-group-item.active {
+  background-color: #0d2137 !important;
+  border-color: white !important;
+}
+
+#myTask {
+  background-color: #e0eaf5;
+  border: none;
+}

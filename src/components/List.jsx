@@ -11,14 +11,14 @@ class List extends React.Component {
     noItems: false,
     form: {
       task: "",
-      priority: ""
+      priority: "",
     },
     modal: false,
     isEditing: false,
     itemSelectedForEdit: {
       task: "",
-      priority: ""
-    }
+      priority: "",
+    },
   };
 
   componentDidMount() {
@@ -32,49 +32,47 @@ class List extends React.Component {
   storageList = () => {
     const taskList = JSON.parse(localStorage.getItem("myTasks"));
     this.setState(() => ({
-       items: taskList 
-      }));
+      items: taskList,
+    }));
   };
 
   showMessage = () => {
-    this.setState( prevState => ({
-       noItems: !prevState.noItems
-       }));
+    this.setState((prevState) => ({
+      noItems: !prevState.noItems,
+    }));
   };
 
-  editTask = item => {
-    this.setState(prevState => ({
+  editTask = (item) => {
+    this.setState((prevState) => ({
       modal: !prevState.modal,
       isEditing: !prevState.isEditing,
       form: {
         task: item.task,
-        priority: item.priority
+        priority: item.priority,
       },
       itemSelectedForEdit: {
         task: item.task,
-        priority: item.priority
-      }
+        priority: item.priority,
+      },
     }));
   };
 
-  deleteTask = item => {
+  deleteTask = (item) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       showCancelButton: true,
       confirmButtonColor: "#042A38",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then(result => {
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
       if (result.value) {
-        Swal.fire("Deleted!").then(
-         this.deleteSingleTask(item)
-        );
+        Swal.fire("Deleted!").then(this.deleteSingleTask(item));
       }
     });
-  }
+  };
 
-    deleteSingleTask = item => {
+  deleteSingleTask = (item) => {
     const allTask = [];
     const existingTask = JSON.parse(localStorage.getItem("myTasks"));
     for (let i = 0; i < existingTask.length; i++) {
@@ -83,13 +81,11 @@ class List extends React.Component {
         existingTask.splice(i, 1);
       }
     }
-      existingTask.forEach(task => {
-        allTask.push(task);
-      });
-      localStorage.setItem("myTasks", JSON.stringify(allTask));
-   
+    existingTask.forEach((task) => {
+      allTask.push(task);
+    });
+    localStorage.setItem("myTasks", JSON.stringify(allTask));
   };
-
 
   fillList = (aList, i) => (
     <SingleTask
@@ -101,15 +97,15 @@ class List extends React.Component {
   );
 
   toggle = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
+      isEditing: !prevState.isEditing,
       modal: !prevState.modal,
-      isEditing: !prevState.isEditing
     }));
   };
 
   toggleAddQuestion = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   };
 
@@ -130,9 +126,9 @@ class List extends React.Component {
         ) : (
           <Table hover>
             <thead>
-              <tr id="fadeText">
+              <tr id="taskHeadColor">
                 {/* <th>#</th> */}
-                <th >Task</th>
+                <th>Task</th>
                 <th>Priority</th>
                 <th></th>
                 <th></th>
@@ -143,8 +139,7 @@ class List extends React.Component {
                     style={{ float: "center", cursor: "pointer" }}
                     data-toggle="tooltip"
                     title="Add Task"
-                  >
-                  </em>
+                  ></em>
                 </th>
               </tr>
             </thead>

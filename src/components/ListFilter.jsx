@@ -4,7 +4,7 @@ import "./ListStyle.css";
 
 class ListFilter extends React.Component {
   state = {
-    items: []
+    items: [],
   };
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class ListFilter extends React.Component {
     this.props.triggerActive(this.props.taskType.priorityType);
   };
 
-  getPriorityType = priority => {
+  getPriorityType = (priority) => {
     switch (priority) {
       case "High":
         return <circle cx="50%" cy="50%" r="10" fill="red" />;
@@ -45,6 +45,7 @@ class ListFilter extends React.Component {
                 : "list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-0"
             }
             onClick={this.handleClickToggle}
+            id="myTask"
           >
             <span className="container">
               <svg width="40" height="40">

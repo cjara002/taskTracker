@@ -1,9 +1,8 @@
 /* ========================================================================
-App.jsx 
+App
  ========================================================================== */
 .App {
   text-align: center;
-  background-color: #f7f5eb;
   font-size: calc(10px + 2vmin);
 }
 
@@ -12,54 +11,24 @@ App.jsx
   -webkit-animation: fadeIn ease 2s;
   background-color: #090b19;
   border-right: white solid;
-  /* boder-style: double; */
 }
 
 #fadeText {
   animation: fadeIn ease 2s;
   -webkit-animation: fadeIn ease 2s;
-  /* border-radius: 25px; */
 }
+
 #quoteHeader {
-  /* animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s; */
   background-color: white;
 }
 #quoteBody {
   background-color: #e0eaf5;
 }
+
 #taskBackground {
   background-color: #090b19;
   animation: fadeIn ease 2s;
   -webkit-animation: fadeIn ease 2s;
-}
-#taskHeadColor {
-  animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s;
-  color: #ff8e2b;
-}
-#SingleTaskColor {
-  animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s;
-  color: white;
-}
-
-#newTask {
-  animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-#roundApp {
-  border-radius: 25px !important;
 }
 
 /* ========================================================================
@@ -72,7 +41,6 @@ ListHeader
   padding: 10px;
   background-image: url("https://images.pexels.com/photos/910299/pexels-photo-910299.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   color: #ff8e2b;
-  /* border-bottom: #ffa500 solid; */
   border-bottom: #ff8e2b solid;
 }
 
@@ -82,7 +50,6 @@ List Footer
 .listFoot {
   background-color: #090b19;
   color: white;
-  /* text-align: center; */
   padding: 10px;
   border-top: #ff8e2b solid;
 }
@@ -105,6 +72,19 @@ List Footer
   color: #ff8e2b;
   text-decoration: none;
 }
+
+/* ========================================================================
+KeyFrames
+ ========================================================================== */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes myMove {
   from {
     top: 0px;
@@ -113,8 +93,32 @@ List Footer
     top: 50px;
   }
 }
-/* 
-SIngle Task */
+/* ========================================================================
+???
+ ========================================================================== */
+#taskHeadColor {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  color: #ff8e2b;
+}
+#SingleTaskColor {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  color: white;
+}
+
+#taskArea {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  background-color: #090b19;
+  color: #ff8e2b;
+}
+
+#roundApp {
+  border-radius: 25px !important;
+}
+
+/* SIngle Task */
 
 #TaskLightUp:hover {
   background: #ff8e2b;
@@ -122,7 +126,3 @@ SIngle Task */
   display: inline;
   border-radius: 50%;
 }
-/* #modalHeader {
-  background: #e0eaf5;
-  color: #ff8e2b;
-} */

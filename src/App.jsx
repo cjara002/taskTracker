@@ -2,19 +2,17 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import List from "./components/List.jsx";
 import ListFilter from "./components/ListFilter.jsx";
-import ListHeader from "./components/ListHeader.jsx";
 import ListFooter from "./components/ListFooter.jsx";
+import ListHeader from "./components/ListHeader.jsx";
+import Quote from "./components/Quotes";
 import React from "react";
 import Swal from "sweetalert2";
-import Quote from "./components/Quotes";
 import { Card, CardHeader, CardBody, CardText } from "reactstrap";
 
 class App extends React.Component {
   state = {
     items: [],
     itemPriority: [],
-    itemFilter: false,
-    quote: [],
     singleQuote: [],
     noItems: false,
   };
@@ -44,19 +42,6 @@ class App extends React.Component {
         priorityType,
         isActive: false,
       })),
-    }));
-  };
-
-  setQuote = (singleQuote) => {
-    let single = [];
-    for (let i = 0; i < singleQuote.length; i++) {
-      i = Math.floor(Math.random() * (singleQuote.length + 1) + 1);
-      let response = singleQuote[i].quotes;
-      single.push(response);
-      break;
-    }
-    this.setState(() => ({
-      singleQuote: single,
     }));
   };
 
@@ -109,13 +94,26 @@ class App extends React.Component {
     }));
   };
 
+  setQuote = (singleQuote) => {
+    let single = [];
+    for (let i = 0; i < singleQuote.length; i++) {
+      i = Math.floor(Math.random() * (singleQuote.length + 1) + 1);
+      let response = singleQuote[i].quotes;
+      single.push(response);
+      break;
+    }
+    this.setState(() => ({
+      singleQuote: single,
+    }));
+  };
+
   clearTask = () => {
     Swal.fire({
       title: "Before you proceed...",
       text: "Are you sure you want to clear your tasks?",
       showCancelButton: true,
-      confirmButtonColor: "#042A38",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33 ",
+      cancelButtonColor: "#090b19",
       confirmButtonText: "Clear All Task",
     }).then((result) => {
       if (result.value) {
@@ -139,17 +137,17 @@ class App extends React.Component {
             <div className="col-lg-3" id="sideList">
               <div>
                 <Card style={{ margin: "2.5%" }}>
-                  <CardHeader tag="h3" className="text-center">
+                  <CardHeader tag="h3" className="text-center" id="quoteHeader">
                     Quote
                   </CardHeader>
-                  <CardBody>
+                  <CardBody id="quoteBody">
                     <CardText>{this.state.singleQuote}</CardText>
                   </CardBody>
                 </Card>
               </div>
             </div>
 
-            <div className="col-lg-9 App">
+            <div className="col-lg-9 App" id="taskArea">
               <List item={this.state.items} />
             </div>
           </div>
@@ -181,11 +179,7 @@ class App extends React.Component {
 
               <div>
                 <Card style={{ margin: "2.5%" }}>
-                  <CardHeader
-                    tag="h3"
-                    className="text-center"
-                    id="quoteHeader"
-                  >
+                  <CardHeader tag="h3" className="text-center" id="quoteHeader">
                     Quote
                   </CardHeader>
                   <CardBody id="quoteBody">

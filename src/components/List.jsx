@@ -15,10 +15,6 @@ class List extends React.Component {
     },
     modal: false,
     isEditing: false,
-    itemSelectedForEdit: {
-      task: "",
-      priority: "",
-    },
   };
 
   componentDidMount() {
@@ -47,10 +43,6 @@ class List extends React.Component {
       modal: !prevState.modal,
       isEditing: !prevState.isEditing,
       form: {
-        task: item.task,
-        priority: item.priority,
-      },
-      itemSelectedForEdit: {
         task: item.task,
         priority: item.priority,
       },
@@ -113,12 +105,12 @@ class List extends React.Component {
     return (
       <React.Fragment>
         {this.state.noItems ? (
-          <div style={{ margin: "20%" }} id="newTask">
-            <h1>Lets get the day started!</h1>
+          <div style={{ margin: "20%" }}>
+            <h1>Let's get the day started!</h1>
             <p>Please add a new task.</p>
             <button
               onClick={this.toggleAddQuestion}
-              className="btn btn-outline-secondary btn-lg btn-block"
+              className="btn btn-dark btn-block"
             >
               Add Task{" "}
             </button>
@@ -153,7 +145,6 @@ class List extends React.Component {
           toggleAddQuestion={this.toggleAddQuestion}
           form={this.state.form}
           isEditing={this.state.isEditing}
-          itemSelectedForEdit={this.itemSelectedForEdit}
           populateTask={this.storageList}
         />
       </React.Fragment>

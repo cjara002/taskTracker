@@ -46,58 +46,63 @@ class TaskForm extends React.Component {
 
   // handleSubmit = (values, { resetForm }) => {
   handleSubmit = (values) => {
-    const allTask = [];
+    //adding additional tasks
     if (this.props.isEditing === false && localStorage.length > 0) {
-      const existingTask = JSON.parse(localStorage.getItem("myTasks"));
-      existingTask.forEach((task) => {
-        allTask.push(task);
-      });
-
       this.setState(() => ({
         formData: values,
       }));
-
-      const myTasks = this.state.formData;
-
-      allTask.push(myTasks);
-      localStorage.setItem("myTasks", JSON.stringify(allTask));
-      // this.populateTaskOnSubmit()
+      this.AddAdditionalTasks();
+      //Editing a Task
     } else if (this.props.isEditing === true && localStorage.length > 0) {
-      const existingTask = JSON.parse(localStorage.getItem("myTasks"));
-      for (let i = 0; i < existingTask.length; i++) {
-        let singleTask = existingTask[i];
-        if (singleTask.task === this.props.form.task) {
-          existingTask.splice(i, 1);
-          //maybe put the replace array method here to put the update task where I spliced the old task.
-        }
-      }
-      existingTask.forEach((task) => {
-        allTask.push(task);
-      });
-
       this.setState(() => ({
         formData: values,
       }));
+      this.EditingATask();
 
-      const myTasks = this.state.formData;
-
-      allTask.push(myTasks);
-
-      localStorage.setItem("myTasks", JSON.stringify(allTask));
-
-      // this.populateTaskOnSubmit()
+      //Adding my first task
     } else {
       this.setState(() => ({
         formData: values,
       }));
-
-      const myTasks = this.state.formData;
-      allTask.push(myTasks);
-      localStorage.setItem("myTasks", JSON.stringify(allTask));
-      // this.populateTaskOnSubmit()
+      this.AddingMyFirstTask();
     }
     // debugger;
     //     resetForm(this.state.formData);
+  };
+
+  AddAdditionalTasks = () => {
+    const allTasks = [];
+    const existingTasks = JSON.parse(localStorage.getItem("myTasks"));
+    existingTasks.forEach((task) => {
+      allTasks.push(task);
+    });
+    allTasks.push(this.state.formData);
+    localStorage.setItem("myTasks", JSON.stringify(allTasks));
+  };
+
+  EditingATask = () => {
+    const allTasks = [];
+    let existingTasks = JSON.parse(localStorage.getItem("myTasks"));
+    for (let i = 0; i < existingTasks.length; i++) {
+      if (this.props.form.task === existingTasks[i].task) {
+        existingTasks.splice(i, 1);
+        existingTasks.splice(i, 0, this.state.formData);
+      }
+    }
+
+    existingTasks.forEach((task) => {
+      allTasks.push(task);
+    });
+
+    // allTasks.push(this.state.formData);
+    localStorage.setItem("myTasks", JSON.stringify(allTasks));
+  };
+
+  AddingMyFirstTask = () => {
+    const allTasks = [];
+    allTasks.push(this.state.formData);
+    localStorage.setItem("myTasks", JSON.stringify(allTasks));
+    // this.populateTaskOnSubmit()
   };
 
   render() {

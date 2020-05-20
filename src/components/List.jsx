@@ -33,8 +33,8 @@ class List extends React.Component {
   };
 
   showMessage = () => {
-    this.setState((prevState) => ({
-      noItems: !prevState.noItems,
+    this.setState(() => ({
+      noItems: true,
     }));
   };
 
@@ -49,7 +49,7 @@ class List extends React.Component {
     }));
   };
 
-  deleteTask = (item) => {
+  deleteTaskUserConfirmation = (item) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -59,7 +59,7 @@ class List extends React.Component {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.value) {
-        Swal.fire("Deleted!").then(this.deleteSingleTask(item));
+        this.deleteSingleTask(item);
       }
     });
   };
@@ -77,6 +77,10 @@ class List extends React.Component {
       allTask.push(task);
     });
     localStorage.setItem("myTasks", JSON.stringify(allTask));
+    var updatedTaskList = JSON.parse(localStorage.getItem("myTasks"));
+    if (!updatedTaskList.includes(item)) {
+      Swal.fire("Deleted!");
+    }
   };
 
   fillList = (aList, i) => (
@@ -84,7 +88,7 @@ class List extends React.Component {
       list={aList}
       key={i}
       triggerEdit={this.editTask}
-      triggerDelete={this.deleteTask}
+      triggerDelete={this.deleteTaskUserConfirmation}
     />
   );
 

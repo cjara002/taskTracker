@@ -123,8 +123,8 @@ class App extends React.Component {
   };
 
   showFilter = () => {
-    this.setState((prevState) => ({
-      noItems: !prevState.noItems,
+    this.setState(() => ({
+      noItems: true,
     }));
   };
 

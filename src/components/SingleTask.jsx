@@ -15,17 +15,9 @@ const SingleTask = (props) => {
     <React.Fragment>
       <tbody>
         <tr id="SingleTaskColor">
-          {/* <th scope="row">#</th> */}
           <td>{props.list.task}</td>
           <td>{props.list.priority}</td>
           <td>
-            {/* <button
-              className="btn btn-outline-dark btn-sm"
-              onClick={editSingleTask}
-            >
-              Edit
-            </button> */}
-
             <em
               className="fa-1x mr-2 fas fa-pen"
               id="TaskLightUp"
@@ -36,13 +28,6 @@ const SingleTask = (props) => {
             ></em>
           </td>
           <td>
-            {/* <button
-              className="btn btn-outline-dark btn-sm"
-              onClick={deleteSingleTask}
-            >
-              Remove
-            </button> */}
-
             <em
               className="fa-1x mr-2 fas fa-trash"
               id="TaskLightUp"

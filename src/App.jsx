@@ -11,14 +11,15 @@ import { Card, CardHeader, CardBody, CardText } from "reactstrap";
 
 class App extends React.Component {
   state = {
-    items: [],
     itemPriority: [],
-    singleQuote: [],
+    items: [],
     noItems: false,
+    singleQuote: [],
   };
 
   componentDidMount() {
-    if (localStorage.length > 0) {
+    const existingTasks = JSON.parse(localStorage.getItem("myTasks"));
+    if (existingTasks) {
       this.storageList();
       this.priorityValue();
       this.setQuote(Quote);

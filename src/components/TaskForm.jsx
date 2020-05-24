@@ -184,21 +184,6 @@ class TaskForm extends React.Component {
                     </FormGroup>
                   </ModalBody>
                   <ModalFooter>
-                    {/* <Button
-                      style={{
-                        border: "none",
-                        background: "none",
-                        color: "black",
-                      }}
-                      onClick={
-                        props.isEditing
-                          ? this.props.toggle
-                          : this.props.toggleAddQuestion
-                      }
-                    >
-                      Cancel
-                    </Button> */}
-
                     <Button
                       color="primary"
                       type="submit"

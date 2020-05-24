@@ -1,14 +1,18 @@
+/* ========================================================================
+ListFilter
+ ========================================================================== */
 .container {
   display: contents;
   justify-content: center;
 }
 
 .list-group-item.active {
-  background-color: #0d2137 !important;
+  background-color: #090b19 !important;
   border-color: white !important;
 }
 
-#myTask {
-  background-color: #e0eaf5;
-  border: none;
-}
+/* .list-group-item.disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+} */

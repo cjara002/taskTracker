@@ -7,18 +7,19 @@ import TaskForm from "./TaskForm";
 
 class List extends React.Component {
   state = {
-    items: [],
-    noItems: false,
     form: {
       task: "",
       priority: "",
     },
-    modal: false,
     isEditing: false,
+    items: [],
+    modal: false,
+    noItems: false,
   };
 
   componentDidMount() {
-    if (localStorage.length > 0) {
+    const existingTasks = JSON.parse(localStorage.getItem("myTasks"));
+    if (existingTasks) {
       this.storageList();
     } else {
       this.showMessage();
@@ -26,9 +27,9 @@ class List extends React.Component {
   }
 
   storageList = () => {
-    const taskList = JSON.parse(localStorage.getItem("myTasks"));
+    const tasksList = JSON.parse(localStorage.getItem("myTasks"));
     this.setState(() => ({
-      items: taskList,
+      items: tasksList,
     }));
   };
 

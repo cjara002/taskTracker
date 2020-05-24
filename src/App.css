@@ -31,6 +31,21 @@ App
   -webkit-animation: fadeIn ease 2s;
 }
 
+#taskArea {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  background-color: #090b19;
+  color: #ff8e2b;
+}
+
+/* ========================================================================
+List
+ ========================================================================== */
+#taskHeadColor {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  color: #ff8e2b;
+}
 /* ========================================================================
 ListHeader
  ========================================================================== */
@@ -72,6 +87,24 @@ List Footer
   color: #ff8e2b;
   text-decoration: none;
 }
+/* ========================================================================
+SingleTask
+ ========================================================================== */
+#SingleTaskColor {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  color: white;
+}
+
+#TaskLightUp {
+  padding: 0.3em;
+  display: inline;
+}
+#TaskLightUp:hover {
+  background: #ff8e2b;
+  display: inline;
+  border-radius: 50%;
+}
 
 /* ========================================================================
 KeyFrames
@@ -92,37 +125,4 @@ KeyFrames
   to {
     top: 50px;
   }
-}
-/* ========================================================================
-???
- ========================================================================== */
-#taskHeadColor {
-  animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s;
-  color: #ff8e2b;
-}
-#SingleTaskColor {
-  animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s;
-  color: white;
-}
-
-#taskArea {
-  animation: fadeIn ease 2s;
-  -webkit-animation: fadeIn ease 2s;
-  background-color: #090b19;
-  color: #ff8e2b;
-}
-
-#roundApp {
-  border-radius: 25px !important;
-}
-
-/* SIngle Task */
-
-#TaskLightUp:hover {
-  background: #ff8e2b;
-  padding: 0.2em;
-  display: inline;
-  border-radius: 50%;
 }

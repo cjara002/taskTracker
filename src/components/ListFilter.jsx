@@ -3,21 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./ListStyle.css";
 
 class ListFilter extends React.Component {
-  state = {
-    items: [],
-  };
-
-  componentDidMount() {
-    if (localStorage.length > 0) {
-      this.showList();
-    }
-  }
-
-  showList = () => {
-    const taskList = JSON.parse(localStorage.getItem("myTasks"));
-    this.setState({ items: taskList });
-  };
-
   handleClickToggle = () => {
     this.props.triggerActive(this.props.taskType.priorityType);
   };
@@ -43,9 +28,9 @@ class ListFilter extends React.Component {
               this.props.taskType.isActive
                 ? "active list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-0"
                 : "list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-0"
+              // : "disabled list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-0"
             }
             onClick={this.handleClickToggle}
-            id="myTask"
           >
             <span className="container">
               <svg width="40" height="40">
